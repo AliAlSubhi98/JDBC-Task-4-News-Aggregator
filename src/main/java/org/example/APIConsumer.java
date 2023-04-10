@@ -31,11 +31,17 @@ public class APIConsumer {
             conn.disconnect();
 
             Gson gson = new Gson();
-            Article myArticle = gson.fromJson(json.toString(), Article.class);
+            ArticleResponse articleResponse = gson.fromJson(json.toString(), ArticleResponse.class);
 
-            // Use myObj for further processing
-            System.out.println(myArticle.status);
-
+            // Use articleResponse for further processing
+            for (Article article : articleResponse.response.docs) {
+                System.out.println("Title: " + article.headline.main);
+                System.out.println("Author: " + article.byline.original);
+                System.out.println("Date: " + article.pub_date);
+                System.out.println("Category: " + article.section_name);
+                System.out.println("Content: " + article.lead_paragraph);
+                System.out.println();
+            }
 
 
 
