@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 public class APIConsumer {
 
-    public static void main(String[] args) {
+    public static void getAPI() {
         String apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=sq0oZI0Mf0YtP5ZnkYJNFcSUFm8mlhXR";
         try {
             URL url = new URL(apiUrl);
