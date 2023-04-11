@@ -168,7 +168,7 @@ public class JDBC {
         }
     }
 
-    public void fetchTablesFromDatabase() {
+    public void fetchArticlesTableFromDatabase() {
 
         System.out.println("TRYING TO FETCH ArticlesTable TABLE ");
         System.out.println();
@@ -196,8 +196,14 @@ public class JDBC {
                 String Category = rs.getString("Category");
                 String Content = rs.getString("Content");
 
+                System.out.println("ArticleID "+ ArticleID);
+                System.out.println("Title "+ Title);
+                System.out.println("Author "+ Author);
+                System.out.println("PublicationDate "+ PublicationDate);
+                System.out.println("Category "+ Category);
+                System.out.println("Content "+ Content);
+                System.out.println();
 
-                System.out.println("ArticleID "+ ArticleID + Title + Author + PublicationDate + Category + Content);
             }
             System.out.println();
             System.out.println("ArticlesTable TABLE FETCHED SUCCESSFULLY");
