@@ -86,7 +86,7 @@ public class JDBC {
                             "    Author VARCHAR(250) ,\n" +
                             "    PublicationDate VARCHAR(250) ,\n" +
                             "    Category VARCHAR(250) ,\n" +
-                            "    Content TEXT\n" +
+                            "    Content VARCHAR(max)\n" +
                             ");";
                     st2.executeUpdate(sql3);
                     System.out.println("ArticlesTable Table created successfully!");
@@ -207,6 +207,69 @@ public class JDBC {
             }
             System.out.println();
             System.out.println("ArticlesTable TABLE FETCHED SUCCESSFULLY");
+            con.close();
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public void searchFromDatabase() {
+        System.out.println("SEARCH FOR UNIVERSITIES IN DATABASE");
+
+        String url = "jdbc:sqlserver://" + "localhost:1433;" + "encrypt=true;" + "trustServerCertificate=true";
+        Connection con = null;
+
+        try {
+            Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            DriverManager.registerDriver(driver);
+
+            // Update url with the database name
+            url += ";databaseName=" + databaseName;
+            con = DriverManager.getConnection(url, userName, password);
+            Statement st = con.createStatement();
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Search by Title (t), Author (a), or Category (c)?");
+            String searchType = scanner.next().toLowerCase();
+            System.out.println("Enter search term:");
+            String searchTerm = scanner.next();
+
+            String sql = "";
+            switch (searchType) {
+                case "t":
+                    sql = "SELECT DISTINCT Title, Author, PublicationDate, Category, Content FROM ArticlesTable WHERE Title LIKE '%"
+                            + searchTerm + "%';";
+                    break;
+                case "a":
+                    sql = "SELECT DISTINCT Title, Author, PublicationDate, Category, Content FROM ArticlesTable WHERE Author LIKE '%"
+                            + searchTerm + "%';";
+                    break;
+                case "c":
+                    sql = "SELECT DISTINCT Title, Author, PublicationDate, Category, Content FROM ArticlesTable WHERE Category LIKE '%"
+                            + searchTerm + "%';";
+                    break;
+                default:
+                    System.err.println("Invalid search type.");
+                    break;
+            }
+
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                String Title = rs.getString("Title");
+                String Author = rs.getString("Author");
+                String PublicationDate = rs.getString("PublicationDate");
+                String Category = rs.getString("Category");
+                String Content = rs.getString("Content");
+
+                System.out.println("Title "+ Title);
+                System.out.println("Author "+ Author);
+                System.out.println("PublicationDate "+ PublicationDate);
+                System.out.println("Category "+ Category);
+                System.out.println("Content "+ Content);
+                System.out.println();
+            }
+
             con.close();
         } catch (Exception ex) {
             System.err.println(ex);

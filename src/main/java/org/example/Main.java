@@ -54,6 +54,7 @@ public class Main {
                     db.fetchArticlesTableFromDatabase();
                     break;
                 case 7:
+                    db.searchFromDatabase();
                     break;
                 case 8:
                     break;
