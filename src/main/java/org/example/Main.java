@@ -4,12 +4,12 @@ package org.example;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        JDBC db = new JDBC();
-        db.loginToDatabase();
+      //  JDBC db = new JDBC();
+       // db.loginToDatabase();
 
-
-        // APIConsumer.getAPI();
-
+         APIConsumer.getAPI();
+        System.out.println("trY,,,,,,,,,,,,,,,,,,");
+        System.out.println(APIConsumer.articleArray.size());
 
     }
 }
