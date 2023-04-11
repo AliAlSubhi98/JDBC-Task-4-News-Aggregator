@@ -84,7 +84,7 @@ public class JDBC {
                             "    ArticleID INT PRIMARY KEY IDENTITY,\n" +
                             "    Title VARCHAR(250) ,\n" +
                             "    Author VARCHAR(250) ,\n" +
-                            "    PublicationDate DATE ,\n" +
+                            "    PublicationDate VARCHAR(250) ,\n" +
                             "    Category VARCHAR(250) ,\n" +
                             "    Content TEXT\n" +
                             ");";
@@ -101,5 +101,44 @@ public class JDBC {
         } catch (Exception ex) {
             System.err.println(ex);
         }
+    }
+
+    public void INSERT_INTO_ArticlesTable() {
+
+        System.out.println("TRYING TO INSERT INTO ArticlesTable");
+
+        String url = "jdbc:sqlserver://" + "localhost:1433;" + "encrypt=true;" + "trustServerCertificate=true";
+        Connection con = null;
+
+        try {
+            Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            DriverManager.registerDriver(driver);
+
+            con = DriverManager.getConnection(url, userName, password);
+            Statement st = con.createStatement();
+
+            // Update url with the database name
+            url += ";databaseName=" + databaseName;
+            con = DriverManager.getConnection(url, userName, password);
+
+            String sql3 = "INSERT INTO ArticlesTable(Title, Author, PublicationDate, Category, Content) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql3);
+
+
+
+            for (Article article : APIConsumer.articleArray) {
+                ps.setString(1, article.headline.main);
+                ps.setString(2, article.byline.original);
+                ps.setString(3, article.pub_date);
+                ps.setString(4, article.section_name);
+                ps.setString(5, article.lead_paragraph);
+                ps.executeUpdate();
+            }
+            System.out.println("Data inserted into ArticlesTable table!");
+            con.close();
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
     }
 }
