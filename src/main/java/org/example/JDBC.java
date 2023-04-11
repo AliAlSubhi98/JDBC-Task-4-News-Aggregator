@@ -167,4 +167,43 @@ public class JDBC {
             System.err.println(ex);
         }
     }
+
+    public void fetchTablesFromDatabase() {
+
+        System.out.println("TRYING TO FETCH ArticlesTable TABLE ");
+        System.out.println();
+
+        String url = "jdbc:sqlserver://" + "localhost:1433;" + "encrypt=true;" + "trustServerCertificate=true";
+        Connection con = null;
+
+        try {
+            Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            DriverManager.registerDriver(driver);
+
+            // Update url with the database name
+            url += ";databaseName=" + databaseName;
+            con = DriverManager.getConnection(url, userName, password);
+            Statement st = con.createStatement();
+
+            String sql = "SELECT * FROM ArticlesTable";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                int ArticleID = rs.getInt("ArticleID");
+                String Title = rs.getString("Title");
+                String Author = rs.getString("Author");
+                String PublicationDate = rs.getString("PublicationDate");
+                String Category = rs.getString("Category");
+                String Content = rs.getString("Content");
+
+
+                System.out.println("ArticleID "+ ArticleID + Title + Author + PublicationDate + Category + Content);
+            }
+            System.out.println();
+            System.out.println("ArticlesTable TABLE FETCHED SUCCESSFULLY");
+            con.close();
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+    }
 }

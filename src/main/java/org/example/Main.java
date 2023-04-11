@@ -51,6 +51,7 @@ public class Main {
                     db.removeArticlesTableFromDatabase();
                     break;
                 case 6:
+                    db.fetchTablesFromDatabase();
                     break;
                 case 7:
                     break;
