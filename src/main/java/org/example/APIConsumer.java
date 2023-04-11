@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 
@@ -13,7 +14,10 @@ public class APIConsumer {
 
 
     public static void getAPI() {
-        String apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=sq0oZI0Mf0YtP5ZnkYJNFcSUFm8mlhXR";
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the article to fetch the API");
+        String search = sc.next();
+        String apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+ search + "&api-key=sq0oZI0Mf0YtP5ZnkYJNFcSUFm8mlhXR";
         try {
             URL url = new URL(apiUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
