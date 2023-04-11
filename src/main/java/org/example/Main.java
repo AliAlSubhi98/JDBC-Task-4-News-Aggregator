@@ -15,10 +15,9 @@ public class Main {
             System.out.println("2.  Initialize database");
             System.out.println("3.  Fetch Data of countries from API");
             System.out.println("4.  INSERT INTO JDBC");
-            System.out.println("5.  BACKUP THE DATABASE ");
-            System.out.println("6.  REMOVE TABLES FROM DATABASE");
-            System.out.println("7.  FETCH COUNTRIES TABLE FROM DB");
-            System.out.println("9.  SEARCH FROM DATABASE");
+            System.out.println("5.  REMOVE TABLES FROM DATABASE");
+            System.out.println("6.  FETCH COUNTRIES TABLE FROM DB");
+            System.out.println("7.  SEARCH FROM DATABASE");
             System.out.println("0.  Exit program");
             System.out.println("=========================================================");
 
@@ -49,6 +48,7 @@ public class Main {
                     db.INSERT_INTO_ArticlesTable();
                     break;
                 case 5:
+                    db.removeArticlesTableFromDatabase();
                     break;
                 case 6:
                     break;

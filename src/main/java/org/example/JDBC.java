@@ -139,6 +139,32 @@ public class JDBC {
         } catch (Exception ex) {
             System.err.println(ex);
         }
+    }
 
+    public void removeArticlesTableFromDatabase() {
+
+        System.out.println("TRYING TO REMOVE ArticlesTable TABLE ");
+
+        String url = "jdbc:sqlserver://" + "localhost:1433;" + "encrypt=true;" + "trustServerCertificate=true";
+        Connection con = null;
+
+        try {
+            Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            DriverManager.registerDriver(driver);
+
+            // Update url with the database name
+            url += ";databaseName=" + databaseName;
+            con = DriverManager.getConnection(url, userName, password);
+            Statement st2 = con.createStatement();
+
+            // Create table if it doesn't exist
+            String sql2 = "drop table ArticlesTable;";
+            st2.executeUpdate(sql2);
+
+            System.out.println("ArticlesTable TABLE REMOVED SUCCESSFULLY");
+            con.close();
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
     }
 }
