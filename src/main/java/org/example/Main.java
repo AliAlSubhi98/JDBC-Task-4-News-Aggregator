@@ -18,6 +18,7 @@ public class Main {
             System.out.println("5.  REMOVE TABLES FROM DATABASE");
             System.out.println("6.  FETCH ArticlesTable FROM DB");
             System.out.println("7.  SEARCH FROM DATABASE");
+            System.out.println("8.  DISPLAY THE MOST POPULAR ARTICLES");
             System.out.println("0.  Exit program");
             System.out.println("=========================================================");
 
@@ -55,6 +56,7 @@ public class Main {
                     db.searchFromDatabase();
                     break;
                 case 8:
+                    APIConsumer.getAPIMostPopularArticles();
                     break;
                 case 0:
                     System.out.println("press <y> to confirm exit");
