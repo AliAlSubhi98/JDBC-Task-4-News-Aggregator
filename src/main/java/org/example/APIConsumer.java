@@ -57,7 +57,12 @@ public class APIConsumer {
 
 
 
-        } catch (Exception e) {
+        }
+        catch (RuntimeException e){
+            System.out.println("API key is invalid");
+            
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
