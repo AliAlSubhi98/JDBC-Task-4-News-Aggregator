@@ -186,7 +186,9 @@ public class JDBC {
             con = DriverManager.getConnection(url, userName, password);
             Statement st = con.createStatement();
 
-            String sql = "SELECT * FROM ArticlesTable";
+            String sql = """
+                    SELECT * FROM ArticlesTable
+                    ORDER BY PublicationDate ASC;""";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
