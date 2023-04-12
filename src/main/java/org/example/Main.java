@@ -36,10 +36,8 @@ public class Main {
                 case 1:
                     db.loginToDatabase();
                     break;
-
                 case 2:
                     db.initializeDatabase();
-
                     break;
                 case 3:
                     APIConsumer.getAPI();
@@ -59,8 +57,14 @@ public class Main {
                 case 8:
                     break;
                 case 0:
-                    System.exit(0);
-                    break;
+                    System.out.println("press <y> to confirm exit");
+                    String exitString = sc.next();
+                    if(exitString.equalsIgnoreCase("y")){
+                        System.exit(0);
+                        break;}
+                    else {
+                        break;
+                    }
                 default:
                     System.err.println("Invalid option number");
                     break;

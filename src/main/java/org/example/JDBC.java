@@ -80,14 +80,15 @@ public class JDBC {
 
                 if (!rs.next()) {
                     // Create table if it doesn't exist
-                    String sql3 = "CREATE TABLE ArticlesTable (\n" +
-                            "    ArticleID INT PRIMARY KEY IDENTITY,\n" +
-                            "    Title VARCHAR(250) ,\n" +
-                            "    Author VARCHAR(250) ,\n" +
-                            "    PublicationDate VARCHAR(250) ,\n" +
-                            "    Category VARCHAR(250) ,\n" +
-                            "    Content VARCHAR(max)\n" +
-                            ");";
+                    String sql3 = """
+                            CREATE TABLE ArticlesTable (
+                                ArticleID INT PRIMARY KEY IDENTITY,
+                                Title VARCHAR(250) ,
+                                Author VARCHAR(250) ,
+                                PublicationDate VARCHAR(250) ,
+                                Category VARCHAR(250) ,
+                                Content VARCHAR(max)
+                            );""";
                     st2.executeUpdate(sql3);
                     System.out.println("ArticlesTable Table created successfully!");
                 } else {
