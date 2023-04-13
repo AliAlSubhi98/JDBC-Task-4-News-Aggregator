@@ -17,7 +17,7 @@ public class APIConsumer {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the article to fetch the API");
         String search = sc.next();
-        String apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+ search + "&api-key=sq0oZI0Mf0YtP5ZnkYJNFcSUFm8mlhXR";
+        String apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + search + "&api-key=sq0oZI0Mf0YtP5ZnkYJNFcSUFm8mlhXR";
         try {
             URL url = new URL(apiUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -55,19 +55,15 @@ public class APIConsumer {
             }
 
 
-
-
-        }
-        catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("API key is invalid");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void getAPIMostPopularArticles () {
+    public static void getAPIMostPopularArticles() {
 
         String apiUrl = "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=sq0oZI0Mf0YtP5ZnkYJNFcSUFm8mlhXR";
         try {
@@ -108,11 +104,7 @@ public class APIConsumer {
             }
 
 
-
-
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

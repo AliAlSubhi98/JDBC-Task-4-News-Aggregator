@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
+
 public class JDBC {
     static String databaseName;
     static String userName;
@@ -126,7 +127,6 @@ public class JDBC {
             PreparedStatement ps = con.prepareStatement(sql3);
 
 
-
             for (Article article : APIConsumer.articleArray) {
                 ps.setString(1, article.headline.main);
                 ps.setString(2, article.byline.original);
@@ -199,12 +199,12 @@ public class JDBC {
                 String Category = rs.getString("Category");
                 String Content = rs.getString("Content");
 
-                System.out.println("ArticleID "+ ArticleID);
-                System.out.println("Title "+ Title);
-                System.out.println("Author "+ Author);
-                System.out.println("PublicationDate "+ PublicationDate);
-                System.out.println("Category "+ Category);
-                System.out.println("Content "+ Content);
+                System.out.println("ArticleID " + ArticleID);
+                System.out.println("Title " + Title);
+                System.out.println("Author " + Author);
+                System.out.println("PublicationDate " + PublicationDate);
+                System.out.println("Category " + Category);
+                System.out.println("Content " + Content);
                 System.out.println();
 
             }
@@ -265,11 +265,11 @@ public class JDBC {
                 String Category = rs.getString("Category");
                 String Content = rs.getString("Content");
 
-                System.out.println("Title "+ Title);
-                System.out.println("Author "+ Author);
-                System.out.println("PublicationDate "+ PublicationDate);
-                System.out.println("Category "+ Category);
-                System.out.println("Content "+ Content);
+                System.out.println("Title " + Title);
+                System.out.println("Author " + Author);
+                System.out.println("PublicationDate " + PublicationDate);
+                System.out.println("Category " + Category);
+                System.out.println("Content " + Content);
                 System.out.println();
             }
 

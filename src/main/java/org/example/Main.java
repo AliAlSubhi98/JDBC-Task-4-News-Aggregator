@@ -34,42 +34,22 @@ public class Main {
 
             // continue with switch statement
             switch (choice) {
-                case 1:
-                    db.loginToDatabase();
-                    break;
-                case 2:
-                    db.initializeDatabase();
-                    break;
-                case 3:
-                    APIConsumer.getAPI();
-                    break;
-                case 4:
-                    db.INSERT_INTO_ArticlesTable();
-                    break;
-                case 5:
-                    db.removeArticlesTableFromDatabase();
-                    break;
-                case 6:
-                    db.fetchArticlesTableFromDatabase();
-                    break;
-                case 7:
-                    db.searchFromDatabase();
-                    break;
-                case 8:
-                    APIConsumer.getAPIMostPopularArticles();
-                    break;
-                case 0:
+                case 1 -> db.loginToDatabase();
+                case 2 -> db.initializeDatabase();
+                case 3 -> APIConsumer.getAPI();
+                case 4 -> db.INSERT_INTO_ArticlesTable();
+                case 5 -> db.removeArticlesTableFromDatabase();
+                case 6 -> db.fetchArticlesTableFromDatabase();
+                case 7 -> db.searchFromDatabase();
+                case 8 -> APIConsumer.getAPIMostPopularArticles();
+                case 0 -> {
                     System.out.println("press <y> to confirm exit");
                     String exitString = sc.next();
-                    if(exitString.equalsIgnoreCase("y")){
+                    if (exitString.equalsIgnoreCase("y")) {
                         System.exit(0);
-                        break;}
-                    else {
-                        break;
                     }
-                default:
-                    System.err.println("Invalid option number");
-                    break;
+                }
+                default -> System.err.println("Invalid option number");
             }
         }
     }
